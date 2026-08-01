@@ -1,0 +1,370 @@
+/* ==========================================================================
+   components.css — buttons, navigation, cards and utilities
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Skip link
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 30;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--duration) var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Button
+   -------------------------------------------------------------------------- */
+
+.btn {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background-image: var(--gradient-brand);
+  color: var(--color-primary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transition: transform var(--duration) var(--ease);
+}
+
+.btn::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  border-radius: inherit;
+  background-image: linear-gradient(to right, hsl(136, 65%, 70%), hsl(192, 70%, 70%));
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   Desktop navigation
+   -------------------------------------------------------------------------- */
+
+.site-nav__link {
+  position: relative;
+  display: block;
+  padding-block: var(--space-3);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease);
+}
+
+.site-nav__link::after {
+  position: absolute;
+  right: 0;
+  bottom: var(--space-2);
+  left: 0;
+  height: 3px;
+  content: "";
+  background-image: var(--gradient-brand);
+  transform: scaleX(0);
+  transition: transform var(--duration) var(--ease);
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus-visible {
+  color: var(--color-text);
+}
+
+.site-nav__link:hover::after,
+.site-nav__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile navigation toggle
+   -------------------------------------------------------------------------- */
+
+.nav-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: calc(var(--space-2) * -1);
+  color: var(--color-primary);
+}
+
+.nav-toggle__icon--close,
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon--open {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon--close {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile menu panel
+   -------------------------------------------------------------------------- */
+
+.mobile-menu {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  z-index: 19;
+  padding: var(--space-4);
+  background-image: linear-gradient(
+    to bottom,
+    hsla(233, 26%, 24%, 0.9),
+    hsla(233, 26%, 24%, 0.1)
+  );
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease), visibility var(--duration) var(--ease);
+}
+
+.mobile-menu.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Locks the page behind the open panel. */
+.has-menu-open,
+.has-menu-open body {
+  overflow: hidden;
+}
+
+.mobile-menu__panel {
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  transform: translateY(-1rem);
+  transition: transform var(--duration) var(--ease);
+}
+
+.mobile-menu.is-open .mobile-menu__panel {
+  transform: translateY(0);
+}
+
+.mobile-menu__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu__link {
+  display: block;
+  padding: var(--space-3);
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+  text-align: center;
+  text-decoration: none;
+  transition: color var(--duration) var(--ease);
+}
+
+.mobile-menu__link:hover,
+.mobile-menu__link:focus-visible {
+  color: var(--color-accent-deep);
+}
+
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Feature
+   -------------------------------------------------------------------------- */
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.feature__icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.feature__text {
+  font-size: var(--text-base);
+}
+
+@media (min-width: 1024px) {
+  .feature {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Article card
+   -------------------------------------------------------------------------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 7;
+  object-fit: cover;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.card__byline {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+}
+
+.card__text {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer__link {
+  color: var(--color-surface-muted);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease);
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible {
+  color: var(--color-accent-deep);
+}
+
+.site-footer__list .site-footer__link {
+  display: block;
+  padding-block: var(--space-1);
+}
+
+.site-footer__legal,
+.site-footer__credit {
+  color: var(--color-text-muted-inverse);
+  font-size: var(--text-sm);
+}
+
+.site-footer__credit {
+  font-size: var(--text-xs);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveal
+   -------------------------------------------------------------------------- */
+
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.js .features > :nth-child(2),
+.js .articles > :nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.js .features > :nth-child(3),
+.js .articles > :nth-child(3) {
+  transition-delay: 160ms;
+}
+
+.js .features > :nth-child(4),
+.js .articles > :nth-child(4) {
+  transition-delay: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Error page
+   -------------------------------------------------------------------------- */
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: calc(100vh - var(--header-height));
+  padding-block: var(--space-7);
+  text-align: center;
+}
+
+.error-page__code {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.error-page__text {
+  max-width: 46ch;
+}
