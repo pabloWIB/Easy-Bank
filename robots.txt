@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://easybank.wib.digital/sitemap.xml
+Sitemap: https://pablowib.github.io/Easy-Bank/sitemap.xml

@@ -2,7 +2,7 @@
 
 Landing page for a fictional digital bank, built to a supplied design, with no build step and no dependencies.
 
-[![Live demo](https://img.shields.io/badge/demo-easybank.wib.digital-2ea44f)](https://easybank.wib.digital)
+[![Live demo](https://img.shields.io/badge/demo-pablowib.github.io/Easy-Bank-2ea44f)](https://pablowib.github.io/Easy-Bank)
 [![Hire me on Fiverr](https://img.shields.io/badge/Hire%20me%20on-Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/pablonietop)
 ![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
@@ -44,7 +44,7 @@ reasoning for each removal is in [`docs/cambios.md`](docs/cambios.md).
 | Styling | CSS3 custom properties | `base.css`, `layout.css`, `components.css` — 18.5 KB |
 | Scripting | Vanilla JavaScript | One entry point, two modules — 4.1 KB |
 | Typography | Public Sans, via Google Fonts | `font-display: swap`, preconnected |
-| Hosting | Vercel | Static, no build command |
+| Hosting | GitHub Pages | Static, no build command |
 
 ## Project structure
 
@@ -112,7 +112,7 @@ The brand gradient itself is unchanged; only the text on top of it is.
 
 ## Deployment
 
-Deployed on Vercel at [easybank.wib.digital](https://easybank.wib.digital). Static: upload the
+Deployed on GitHub Pages at [pablowib.github.io/Easy-Bank](https://pablowib.github.io/Easy-Bank). Static: upload the
 repository root as-is, with no build command and no output directory. The canonical URL,
 `og:url` and `sitemap.xml` all point at that domain and need editing if it changes.
 
